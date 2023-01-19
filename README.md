@@ -9,7 +9,8 @@ We created (backend only) database of various users in organisation like GFA (st
 We created endpoints for CRUD operations
 We had various user rights for admins, mentors or students. Login was implemented.
 We used SQL to store all the data.
+We dockerized app.
 
-Later on we deployed both SQL and application on MS Azure and connected them together (app is not live any more).
+We deployed both SQL and application on MS Azure cloud and connected them together (app is not live any more).
 We implemented circle CI to autodeploy all changes done.
 
