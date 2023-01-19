@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  app:
+    environment:
+      - DB_HOST=mysql
+    image: node-app-image
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        HOMEDIR: ${HOMEDIR}
+        PORT: ${PORT}
+        NODE_ENV: "development"
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - mysql
+    volumes:
+      - .:/usr/src/app
+
+  mysql:
+    expose:
+      - ${DB_PORT}
+    image: mysql:latest
+    restart: always
+    ports:
+      - "13306:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
